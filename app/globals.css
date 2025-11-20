@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --page-bg: #f5f7ff;
+  --page-fg: #0b0b2c;
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-border: rgba(15, 23, 42, 0.12);
+  --muted: #4c5476;
+  --muted-strong: #1f2240;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --page-bg: #02010f;
+  --page-fg: #f7f8ff;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-border: rgba(255, 255, 255, 0.15);
+  --muted: #c7c8ff;
+  --muted-strong: #fef9c3;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--page-bg);
+  --color-foreground: var(--page-fg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--page-bg);
+  color: var(--page-fg);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  transition: background 200ms ease, color 200ms ease;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.glass-surface {
+  background: var(--surface);
+  border-color: var(--surface-border);
 }
