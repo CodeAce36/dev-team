@@ -320,35 +320,37 @@ export default function Home() {
 
           <motion.div
             ref={processTimelineRef}
-            className="relative space-y-10 pl-10"
+            className="relative pl-10 py-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.35 }}
             variants={fadeUpParent}
           >
             <span
-              className={`pointer-events-none absolute left-3 top-0 bottom-0 w-px ${isDark ? "bg-white/15" : "bg-slate-200"}`}
+              className={`pointer-events-none absolute left-4 top-0 bottom-0 w-px ${isDark ? "bg-white/20" : "bg-slate-300"}`}
               aria-hidden="true"
             />
             <motion.span
               style={{ height: timelineProgress }}
-              className="pointer-events-none absolute left-3 top-0 w-px bg-amber-400"
+              className="pointer-events-none absolute left-4 top-0 w-px bg-amber-300"
               aria-hidden="true"
             />
-            {processSteps.map((step, index) => (
-              <motion.div key={step.phase} className="relative pl-6" variants={fadeUpItem}>
-                <span
-                  className={`absolute left-[-34px] top-2 inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-semibold ${
-                    isDark ? "border-white/40" : "border-slate-200"
-                  }`}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p className="text-xs uppercase tracking-[0.4em] opacity-70">{step.phase}</p>
-                <h3 className="mt-2 text-2xl font-semibold">{step.title}</h3>
-                <p className={`mt-2 text-base ${sectionSubheadingClass}`}>{step.copy}</p>
-              </motion.div>
-            ))}
+            <div className="relative space-y-12">
+              {processSteps.map((step, index) => (
+                <motion.div key={step.phase} className="relative flex items-start gap-6" variants={fadeUpItem}>
+                  <span
+                    className={`relative z-10 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-300 text-xs font-semibold text-white`}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div className="flex-1 pt-1">
+                    <p className={`text-xs uppercase tracking-[0.4em] opacity-70 mb-2 ${index === 3 ? "whitespace-nowrap" : ""}`}>{step.phase}</p>
+                    <h3 className={`text-2xl font-semibold mb-2 ${index === 3 ? "whitespace-nowrap" : ""}`}>{step.title}</h3>
+                    <p className={`text-base ${sectionSubheadingClass}`}>{step.copy}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
