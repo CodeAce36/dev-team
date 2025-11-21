@@ -7,8 +7,11 @@ import { useTheme } from "../providers";
 
 const navLinks = [
   { label: "Home", href: "#", isActive: true },
+  { label: "Services", href: "#services", isActive: false },
+  { label: "Process", href: "#process", isActive: false },
+  { label: "Work", href: "#works", isActive: false },
   { label: "Team", href: "#team", isActive: false },
-  { label: "Our Works", href: "#works", isActive: false },
+  { label: "Contact", href: "#contact", isActive: false },
 ];
 
 export default function Navbar() {
